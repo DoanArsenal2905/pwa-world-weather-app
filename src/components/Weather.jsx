@@ -25,7 +25,7 @@ const Weather = () => {
         onChange={e => setQuery(e.target.value)}
         onKeyPress={search}
       />
-      { weather.main && (
+      {weather.main && (
         <div className='city'>
           <h2 className='city-name'>
             <span>{weather.name}</span>
@@ -40,7 +40,7 @@ const Weather = () => {
             <p>{weather.weather[0].description}</p>
           </div>
         </div>
-      ) }
+      )}
       <div className='footer'>
         <p>Made by Ngo Quoc Doan <span role='img' aria-label='smile-tear'>&#128526;</span><span role='img' aria-label='smile-tear'>&#128526;</span></p>
       </div>
