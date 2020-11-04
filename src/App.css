@@ -7,7 +7,7 @@ html, body, #root {
 }
 
 .main-container {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://firebasestorage.googleapis.com/v0/b/doan-firegram.appspot.com/o/38280408_284027279046234_9003012207088238592_o.jpg?alt=media&token=e245f033-7dc2-4664-8fc9-e55fdc89f80c');
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://firebasestorage.googleapis.com/v0/b/doan-firegram.appspot.com/o/pexels-veeterzy-39811.jpg?alt=media&token=5c9066e7-6142-450f-a777-79024bccae14');
   background-size: cover;
   background-position: center;
   height: 100%;

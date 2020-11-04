@@ -6,6 +6,10 @@ const Weather = () => {
   const [query, setQuery] = useState('')
   const [weather, setWeather] = useState({})
   const [location, setLocation] = useState({})
+
+  if (localStorage.getItem('location') === null) {
+    localStorage.setItem('location', JSON.stringify({}))
+  }
   
   const search = async e => {
     if (e.key === 'Enter') {
@@ -23,31 +27,39 @@ const Weather = () => {
     }
     getStorage()
   }, [weather])
-  
+
   return (
     <div className='main-container'>
       <input
         type='text'
         className='search'
-        placeholder='Search...'
+        placeholder='Search City ...'
         value={query}
         onChange={e => setQuery(e.target.value)}
         onKeyPress={search}
       />
-      {location.main && (
+      {(location.main || (weather.main && location === {})) ? (
         <div className='city'>
           <h2 className='city-name'>
-            <span>{location.name}</span>
-            <sup>{location.sys.country}</sup>
+            <span>{location.name || weather.name}</span>
+            <sup>{location.sys.country || weather.sys.country}</sup>
           </h2>
           <div className="city-temp">
-            {Math.round(location.main.temp)}
+            {Math.round(location.main.temp || weather.main.temp)}
             <sup>&deg;C</sup>
           </div>
           <div className="info">
-            <img className="city-icon" src={`https://openweathermap.org/img/wn/${location.weather[0].icon}@2x.png`} alt={location.weather[0].description} />
-            <p>{location.weather[0].description}</p>
+            <img
+              className="city-icon"
+              src={`https://openweathermap.org/img/wn/${location.weather[0].icon || weather.weather[0].icon}@2x.png`}
+              alt={location.weather[0].description || weather.weather[0].description}
+            />
+            <p>{location.weather[0].description || weather.weather[0].description}</p>
           </div>
+        </div>
+      ) : (
+        <div className='city'>
+          <p style={{ fontWeight: 'bold' }}>Oops!! <span role='img' aria-label='shock-monkey'>🌈</span> No city detected yet!! <span role='img' aria-label='smile-tear'>⛅ ☔ 🌂⛄</span></p>
         </div>
       )}
       <div className='footer'>
